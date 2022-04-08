@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="image/toque.png" />
+    <title>Les petits plats</title>
+</head>
+
+<body>
+    <header>
+        <img src="image/logo.png" alt="logo startup les petits plats">
+    </header>
+    <main>
+        <div id="section_search">
+            <form>
+                <div>
+                    <label for="search"></label>
+                    <input type="text" id="search" name="search" placeholder="Rechercher une recette">
+                    <img src="image/loupe.svg" alt="logo loupe">
+                </div>
+                <span class="error_searchBar"></span>
+            </form>
+        </div>
+        <div id="section_tag"></div>
+        <div id="section_filter">
+            <div class="list_filter" data-list="ingredients">
+                <div class="ingredients_color filter_tag ">
+                    <input type="text" placeholder="Ingrédients" id="ingredients" name="ingrédient" />
+                    <img src="image/down-arrow.svg" alt="logo d'un flèche vers le bas">
+                </div>
+                <ul class="ingredients_color"></ul>
+            </div>
+            <div class="list_filter" data-list="appliances">
+                <div class="appliances_color filter_tag">
+                    <input type="text" placeholder="Appareils" id="appliances" name="appareil" />
+                    <img src="image/down-arrow.svg" alt="logo d'un flèche vers le bas">
+                </div>
+                <ul class="appliances_color"></ul>
+            </div>
+            <div class="list_filter" data-list="ustensils">
+                <div class="ustensils_color filter_tag">
+                    <input type="text" placeholder="Ustensiles" id="ustensils" name="ustensile" />
+                    <img src="image/down-arrow.svg" alt="logo d'un flèche vers le bas">
+                </div>
+                <ul class="ustensils_color"></ul>
+            </div>
+        </div>
+        <div id="section_recipes"></div>
+        <div id="section_error"></div>
+    </main>
+    <script type="module" src="script2/index.js"></script>
+</body>
+
+</html>
