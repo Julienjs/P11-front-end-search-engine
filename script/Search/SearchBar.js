@@ -59,7 +59,6 @@ export default class SearchBar {
                 for (let li of this.listTag) {
                     li.search(this.tagFilterRecipe)
                     li.showTag()
-                    li.deleteTag(list.tagList)
                     li.displayTag()
                     this.onTag(li)
                 }
