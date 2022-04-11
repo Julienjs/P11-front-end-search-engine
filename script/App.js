@@ -17,7 +17,6 @@ export default class App {
         }
         let searchBar = new SearchBar(this.listSearchTag, recipes) // envoi en parametre le tableau contenant les list et les recettes / joue la fonction 
         for (let list of this.listSearchTag) {
-
             searchBar.onTag(list)
         }
 
