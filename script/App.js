@@ -1,4 +1,3 @@
-import SearchBar from './Search/SearchBar.js'
 import SearchBarV2 from './Search/SearchBarV2.js'
 
 import SearchTagFactory from './Search/SearchTagFactory.js';
@@ -23,13 +22,10 @@ export default class App {
         let searchBarV2 = new SearchBarV2(this.listSearchTag, recipes) // envoi en parametre le tableau contenant les list et les recettes / joue la fonction 
         for (let list of this.listSearchTag) {
             searchBarV2.onTag(list)
-            searchBar.onTag(list)
         }
 
         RecipesDom.showRecipes(recipes) //envoi des recettes en parametre / joue la fonction 
-        searchBar.onSearch()  //joue la fonction qui permet de faire la recherche dans la barre principal
         searchBarV2.onSearch()  //joue la fonction qui permet de faire la recherche dans la barre principal
-
     }
 
 
