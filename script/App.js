@@ -18,7 +18,6 @@ export default class App {
             searchTag.hideTag()  //permet de jouer la fonction pour fermer la liste 
         }
 
-        let searchBar = new SearchBar(this.listSearchTag, recipes) // envoi en parametre le tableau contenant les list et les recettes / joue la fonction 
         let searchBarV2 = new SearchBarV2(this.listSearchTag, recipes) // envoi en parametre le tableau contenant les list et les recettes / joue la fonction 
         for (let list of this.listSearchTag) {
             searchBarV2.onTag(list)

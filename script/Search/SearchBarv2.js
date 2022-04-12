@@ -33,6 +33,8 @@ export default class SearchBarV2 {
         }
     }
 
+
+
     // Evenement lorsque que l'on écrit dans la barre de recherche principal  
     onSearch() {
         this.element.querySelector("input").addEventListener("keyup", (e) => {
