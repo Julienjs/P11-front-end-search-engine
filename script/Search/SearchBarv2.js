@@ -14,8 +14,7 @@ export default class SearchBarV2 {
     search(value) {
         if (value.length >= 3) {
             this.filterRecipe = [];
-            // for (let recipe of this.recipes) {
-            this.recipes.map(recipe => {
+            for (let recipe of this.recipes) {
                 if (recipe.name.toLowerCase().includes(value)) {
                     this.filterRecipe.push(recipe)
                 }
@@ -25,7 +24,7 @@ export default class SearchBarV2 {
                 else if (recipe.ingredients.some(ingredient => ingredient.ingredient.toLowerCase().includes(value))) {
                     this.filterRecipe.push(recipe)
                 }
-            });
+            };
             if (this.filterRecipe.length === 0) {
                 this.errorMessage()
             }
