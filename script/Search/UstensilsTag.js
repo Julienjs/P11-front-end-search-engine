@@ -21,6 +21,7 @@ export default class UstensilsTag extends SearchTag {
     filter(recipes, value) {
         let filterRecipe = [];
         recipes.forEach(recipe => {
+            console.log(recipe.ustensils);
             if (recipe.ustensils.some(ustensil => ustensil.toLowerCase() === value.toLowerCase())) {
                 filterRecipe.push(recipe)
             }

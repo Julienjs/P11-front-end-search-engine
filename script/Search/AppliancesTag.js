@@ -5,7 +5,7 @@ export default class AppliancesTag extends SearchTag {
     constructor(list, recipes) {
         super(list, recipes)
         this.data = []
-        this.appliance = []
+        this.appliances = []
     }
 
 
@@ -19,9 +19,11 @@ export default class AppliancesTag extends SearchTag {
 
     filter(recipes, value) {
         let filterRecipe = [];
+        this.appliances = [];
         recipes.forEach(recipe => {
-            this.appliance.push(recipe.appliance)
-            if (this.appliance.some(appliance => appliance.toLowerCase() === value.toLowerCase())) {
+            this.appliances.push(recipe.appliance)
+            if (this.appliances.some(appliance => appliance.toLowerCase() === value.toLowerCase())) {
+                console.log(recipe);
                 filterRecipe.push(recipe)
             }
         });
