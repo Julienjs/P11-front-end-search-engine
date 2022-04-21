@@ -6,12 +6,12 @@ export default class Recipes {
         this.ingredient = new Ingredients(this.ingredients)
     }
 
-    // Fonction qui contient la création du dom pour les recettes 
+    // Affichage des recettes 
     createDom() {
         return `
                 <article>
                     <div class="image">
-                    <img src="image/cover/${this.cover}"/>
+                       <img src="image/cover/${this.cover}"/>
                     </div>
                     <div class="container_article">
                         <div class="title">
@@ -31,5 +31,5 @@ export default class Recipes {
                         </div>
                     </div>
                 </article>`
-    }
+    };
 }

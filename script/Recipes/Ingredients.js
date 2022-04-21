@@ -1,17 +1,20 @@
 export default class Ingredients {
+
     constructor(ingredients) {
         this.ingredients = ingredients
-
-
     }
 
-    // Fonction qui contient la création du dom pour les ingrédients 
+    // Affichage des ingrédients dans les recettes 
     createDom() {
         return (
             this.ingredients.map((ingredient) => {
+
+                // Ajout de la majuscule
                 const upperCaseIngredient = () => {
                     return ingredient.ingredient[0].toUpperCase() + ingredient.ingredient.slice(1).toLowerCase()
-                }
+                };
+
+                // Affichage des quantités
                 const checkQuantity = () => {
                     if (ingredient.quantity === undefined) {
                         return ""
@@ -19,7 +22,9 @@ export default class Ingredients {
                     else {
                         return ingredient.quantity
                     }
-                }
+                };
+
+                // Affichage des unités de mesure
                 const checkUnit = () => {
                     if (ingredient.unit === undefined) {
                         return ""
@@ -29,14 +34,17 @@ export default class Ingredients {
                     else {
                         return ingredient.unit
                     }
-                }
+                };
+
+                // Affichage des deux points 
                 const twoPoint = () => {
                     if (ingredient.unit === undefined && ingredient.quantity === undefined) {
                         return ""
                     } else {
                         return ":"
                     }
-                }
+                };
+
                 return `
             <div>
                 <p class="recipe_detail_ingredient">${upperCaseIngredient()}${twoPoint()}</p>
@@ -45,6 +53,5 @@ export default class Ingredients {
             </div>`
             }).join('')
         )
-    }
-
+    };
 }

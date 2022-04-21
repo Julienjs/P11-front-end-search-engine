@@ -7,17 +7,17 @@ export default class UstensilsTag extends SearchTag {
         this.data = []
     }
 
-    // Fonction qui filtre la liste des ustensiles et supprime les doublons 
+    // Récupèration de la liste des ustensils et suppression des doublons pour l'affichage de la liste
     search(recipes) {
-        this.data = []
+        this.data = [];
         recipes.forEach((item) => {
             this.data = this.data.concat(item.ustensils.map(ustensil => ustensil[0].toUpperCase() + ustensil.slice(1).toLowerCase()
             ))
         });
-        this.data = [...new Set(this.data)]
+        this.data = [...new Set(this.data)];
+    };
 
-    }
-
+    // Filtre la liste des ustensils lors de la fermeture d'un tag 
     filter(recipes, value) {
         let filterRecipe = [];
         recipes.forEach(recipe => {
@@ -26,5 +26,5 @@ export default class UstensilsTag extends SearchTag {
             }
         });
         return filterRecipe
-    }
+    };
 }

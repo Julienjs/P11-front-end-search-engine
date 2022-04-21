@@ -1,7 +1,8 @@
 import Recipes from "../Recipes/Recipes.js";
 
 export default class RecipesDom {
-    // gestion d'affichage des recettes les recettes dans le dom 
+
+    // Affichage des recettes 
     static showRecipes(recipes) {
         let recipeDom = "";
         recipes.forEach((item) => {
@@ -9,5 +10,5 @@ export default class RecipesDom {
             recipeDom += recipe.createDom();
         });
         document.querySelector("#section_recipes").innerHTML = recipeDom
-    }
+    };
 }
