@@ -16,24 +16,20 @@ export default class SearchBar {
             this.filterRecipe = [];
             this.recipes.forEach((recipe) => {
                 if (recipe.name.toLowerCase().includes(value)) {
-                    this.filterRecipe.push(recipe)
+                    this.filterRecipe.push(recipe);
                 }
                 else if (recipe.description.toLowerCase().includes(value)) {
-                    this.filterRecipe.push(recipe)
+                    this.filterRecipe.push(recipe);
                 }
                 else if (recipe.ingredients.some(ingredient => ingredient.ingredient.toLowerCase().includes(value))) {
-                    this.filterRecipe.push(recipe)
+                    this.filterRecipe.push(recipe);
                 }
             });
-            if (this.filterRecipe.length === 0) {
-                this.errorMessage()
-            }
+
         } else if (value.length === 0) {
-            this.filterRecipe = this.recipes
+            this.filterRecipe = this.recipes;
         }
-    }
-
-
+    };
 
     // Evenement lorsque que l'on écrit dans la barre de recherche principal  
     onSearch() {
@@ -41,56 +37,63 @@ export default class SearchBar {
             this.search(e.target.value);
             RecipesDom.showRecipes(this.filterRecipe);
             for (let list of this.listTag) {
-                list.search(this.filterRecipe)
-                list.showTag()
-                this.onTag(list)
+                list.search(this.filterRecipe);
+                list.showTag();
+                this.onTag(list);
+            };
+
+            if (this.filterRecipe.length === 0) {
+                this.errorMessage();
+            } else {
+                document.querySelector("#section_error").innerHTML = "";
             }
-            this.tagFilterRecipe = this.filterRecipe
-        })
-    }
+
+            this.tagFilterRecipe = this.filterRecipe;
+        });
+    };
 
     onTag(list) {
         list.element.querySelectorAll("li").forEach(tagList => {
-            tagList.addEventListener("click", (e) => {
-                list.tagList.push(tagList.textContent)
-                this.tagFilterRecipe = list.filter(this.tagFilterRecipe, tagList.textContent)
+            tagList.addEventListener("click", () => {
+                list.tagList.push(tagList.textContent);
+                this.tagFilterRecipe = list.filter(this.tagFilterRecipe, tagList.textContent);
                 RecipesDom.showRecipes(this.tagFilterRecipe);
-                document.querySelector("#section_tag").innerHTML = ""
+                document.querySelector("#section_tag").innerHTML = "";
                 for (let li of this.listTag) {
-                    li.search(this.tagFilterRecipe)
-                    li.showTag()
-                    li.displayTag()
-                    this.onTag(li)
-                }
-                this.closeTag()
+                    li.search(this.tagFilterRecipe);
+                    li.showTag();
+                    li.displayTag();
+                    this.onTag(li);
+                };
+                this.closeTag();
             })
         })
     };
 
     closeTag() {
-        let close = document.querySelectorAll(".delete_img")
+        let close = document.querySelectorAll(".delete_img");
         close.forEach(item => {
             item.addEventListener("click", (e) => {
                 let currentTag = e.currentTarget.closest(".tag");
                 let list = this.listTag.find(list => list.list === currentTag.dataset.list);
-                list.tagList = list.tagList.filter(tag => tag !== currentTag.querySelector("p").innerHTML)
-                currentTag.remove()
-                this.tagFilterRecipe = this.filterRecipe
+                list.tagList = list.tagList.filter(tag => tag !== currentTag.querySelector("p").innerHTML);
+                currentTag.remove();
+                this.tagFilterRecipe = this.filterRecipe;
                 for (let li of this.listTag) {
                     for (let tag of li.tagList) {
-                        this.tagFilterRecipe = li.filter(this.tagFilterRecipe, tag)
-                    }
-                }
+                        this.tagFilterRecipe = li.filter(this.tagFilterRecipe, tag);
+                    };
+                };
                 RecipesDom.showRecipes(this.tagFilterRecipe);
                 for (let li of this.listTag) {
-                    li.search(this.tagFilterRecipe)
-                    li.showTag()
-                    this.onTag(li)
-                }
-            })
+                    li.search(this.tagFilterRecipe);
+                    li.showTag();
+                    this.onTag(li);
+                };
+            });
 
-        })
-    }
+        });
+    };
 
     errorMessage() {
         document.querySelector("#section_error").innerHTML = `   
@@ -99,7 +102,7 @@ export default class SearchBar {
              <p> vous pouvez chercher << tarte aux pommes >>, << poisson >>, etc.</p>
         </article>
         `
-    }
+    };
 
 
 

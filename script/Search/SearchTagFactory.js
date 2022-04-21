@@ -12,5 +12,5 @@ export default class SearchTagFactory {
             case "ustensils":
                 return new UstensilsTag(list, recipes);
         }
-    }
+    };
 }
