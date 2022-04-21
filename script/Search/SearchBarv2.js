@@ -18,10 +18,15 @@ export default class SearchBarV2 {
             this.search(e.target.value);
             RecipesDom.showRecipes(this.filterRecipe);
             for (let list of this.listTag) {
-                list.search(this.filterRecipe)
-                list.showTag()
-                this.onTag(list)
+                list.search(this.filterRecipe);
+                list.showTag();
+                this.onTag(list);
             };
+            if (this.filterRecipe.length === 0) {
+                this.errorMessage();
+            } else {
+                document.querySelector("#section_error").innerHTML = "";
+            }
             this.tagFilterRecipe = this.filterRecipe
         });
     };
@@ -42,20 +47,18 @@ export default class SearchBarV2 {
             this.filterRecipe = [];
             for (let recipe of this.recipes) {
                 if (recipe.name.toLowerCase().includes(value)) {
-                    this.filterRecipe.push(recipe)
+                    this.filterRecipe.push(recipe);
                 }
                 else if (recipe.description.toLowerCase().includes(value)) {
-                    this.filterRecipe.push(recipe)
+                    this.filterRecipe.push(recipe);
                 }
                 else if (recipe.ingredients.some(ingredient => ingredient.ingredient.toLowerCase().includes(value))) {
-                    this.filterRecipe.push(recipe)
+                    this.filterRecipe.push(recipe);
                 }
             };
-            if (this.filterRecipe.length === 0) {
-                this.errorMessage()
-            }
+
         } else if (value.length === 0) {
-            this.filterRecipe = this.recipes
+            this.filterRecipe = this.recipes;
         }
     };
 
@@ -65,20 +68,20 @@ export default class SearchBarV2 {
     // Ajout d'un tag
     onTag(list) {
         list.element.querySelectorAll("li").forEach(tagList => {
-            tagList.addEventListener("click", (e) => {
-                list.tagList.push(tagList.textContent)
-                this.tagFilterRecipe = list.filter(this.tagFilterRecipe, tagList.textContent)
+            tagList.addEventListener("click", () => {
+                list.tagList.push(tagList.textContent);
+                this.tagFilterRecipe = list.filter(this.tagFilterRecipe, tagList.textContent);
                 RecipesDom.showRecipes(this.tagFilterRecipe);
-                document.querySelector("#section_tag").innerHTML = ""
+                document.querySelector("#section_tag").innerHTML = "";
                 for (let li of this.listTag) {
-                    li.search(this.tagFilterRecipe)
-                    li.showTag()
-                    li.displayTag()
-                    this.onTag(li)
-                }
-                this.closeTag()
-            })
-        })
+                    li.search(this.tagFilterRecipe);
+                    li.showTag();
+                    li.displayTag();
+                    this.onTag(li);
+                };
+                this.closeTag();
+            });
+        });
     };
 
     // Fermer un tag 
@@ -97,7 +100,7 @@ export default class SearchBarV2 {
                 for (let li of this.listTag) {
                     for (let tag of li.tagList) {
                         this.tagFilterRecipe = li.filter(this.tagFilterRecipe, tag)
-                    }
+                    };
                 };
 
                 RecipesDom.showRecipes(this.tagFilterRecipe);
